@@ -8,17 +8,17 @@ import java.util.Scanner;
 
 public class Lab2 {
 
-    public static int[] CreateRandom() {
+    public static int[] CreateRandom(int max_number, int max_size) {
         int min =2;
-        int max =10;
-        max-=min;
-        int m = (int) (Math.random()*++max)+min;
+
+        max_number-=min;
+        int m = (int) (Math.random()*++max_number)+min;
 
         int[] mas = new int[m];
         System.out.println("The number of " + m + " requests was created");
         for (int i = 0; i < mas.length; i++) {
             double k = Math.random();
-            int l = (int) (k * 100);
+            int l = (int) (k * max_size);
 
             System.out.println("The " + i + " init number is " + l);
             mas[i] = l;
@@ -37,7 +37,7 @@ public class Lab2 {
     }
 
 
-    public static void which_is_faster(int size)
+    public static void which_is_faster(int size, int max_number, int max_size)
     {
         int i = 0;
         int number1 =0;
@@ -48,7 +48,7 @@ public class Lab2 {
         while(i<size)
         {
             int start = (int) (Math.random() * 100);
-            int[] mas = CreateRandom();
+            int[] mas = CreateRandom(max_number, max_size);
             number1+=FCFS.FCFS(mas,start);
             number2+=SSTF.sstf(mas,start);
             number3+=SCAN.SCAN(mas,start);
@@ -87,10 +87,7 @@ public class Lab2 {
     public static void main(String[] args)
     {
 
-
-
-
-
+        which_is_faster(10, 100, 1000);
 
 
 
